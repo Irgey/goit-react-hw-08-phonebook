@@ -2,19 +2,34 @@ import { useSelector } from 'react-redux';
 import { ContactElement } from 'components';
 import PropTypes from 'prop-types';
 import { selectContacts } from 'redux/selectors';
+import { Oval } from 'react-loader-spinner';
 
 const ContactList = ({ contacts }) => {
-  const { isLoading, error } = useSelector(selectContacts);
+  const { isLoading } = useSelector(selectContacts);
 
   return (
     <>
       {' '}
-      {isLoading && !error && <p>Loading contacts...</p>}
-      <ul>
-        {contacts.map(({ name, phone, id }) => (
-          <ContactElement name={name} phone={phone} key={id} id={id} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <Oval
+          height={80}
+          width={80}
+          color="#4fa94d"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="#4fa94d"
+          strokeWidth={8}
+          strokeWidthSecondary={8}
+        />
+      ) : (
+        <ul>
+          {contacts.map(({ name, number, id }) => (
+            <ContactElement name={name} number={number} key={id} id={id} />
+          ))}
+        </ul>
+      )}
     </>
   );
 };
