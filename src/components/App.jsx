@@ -8,29 +8,49 @@ import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { Layout } from './Layout/Layout';
 import { HomePage } from 'pages/HomePage/HomePage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/AuthOperations';
+import { selectAuthIsLoading } from 'redux/selectors';
+import { Oval } from 'react-loader-spinner';
 export const App = () => {
+  const authIsLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
   return (
-    <div
-      style={{
-        paddingLeft: '15px',
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </div>
+    <>
+      {authIsLoading ? (
+        <Oval
+          height={80}
+          width={80}
+          color="#4fa94d"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="#4fa94d"
+          strokeWidth={8}
+          strokeWidthSecondary={8}
+        />
+      ) : (
+        <div
+          style={{
+            paddingLeft: '15px',
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </div>
+      )}
+    </>
   );
 };
