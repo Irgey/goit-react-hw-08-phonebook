@@ -10,7 +10,7 @@ const initialState = {
   user: { name: '', email: '' },
   token: null,
   isOnline: false,
-  isLoading: false,
+  authIsLoading: false,
   error: null,
 };
 
@@ -28,7 +28,6 @@ const authSlice = createSlice({
         console.log(payload);
         state.user = payload.user;
         state.token = payload.token;
-        state.isOnline = true;
       })
       .addCase(logOutThunk.fulfilled, (state, { payload }) => {
         state.user = '';
@@ -42,19 +41,19 @@ const authSlice = createSlice({
       .addMatcher(
         action => action.type.endsWith('/pending'),
         state => {
-          state.isLoading = true;
+          state.authIsLoading = true;
         }
       )
       .addMatcher(
         action => action.type.endsWith('/fulfilled'),
         state => {
-          state.isLoading = false;
+          state.authIsLoading = false;
         }
       )
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
-          state.isLoading = false;
+          state.authIsLoading = false;
           state.error = action.payload;
         }
       );
