@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk } from './AuthOperations';
+import {
+  registerThunk,
+  loginThunk,
+  refreshThunk,
+  logOutThunk,
+} from './AuthOperations';
 
 const initialState = {
   user: { name: '', email: '' },
@@ -25,6 +30,15 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.isOnline = true;
       })
+      .addCase(logOutThunk.fulfilled, (state, { payload }) => {
+        state.user = '';
+        state.token = '';
+        state.isOnline = false;
+      })
+      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isOnline = true;
+      })
       .addMatcher(
         action => action.type.endsWith('/pending'),
         state => {
@@ -47,3 +61,16 @@ const authSlice = createSlice({
   },
 });
 export const authReducer = authSlice.reducer;
+// [refreshThunk.pending]: (state, { payload }) => {
+// 			state.loading = true
+// 		},
+
+// 		[refreshThunk.fulfilled]: (state, { payload }) => {
+// 			state.online = true
+// 			state.loading = false
+// 			state.user = payload
+// 		},
+// 		[refreshThunk.rejected]: (state, { payload }) => {
+// 			state.error = payload
+// 			state.loading = false
+// 		},

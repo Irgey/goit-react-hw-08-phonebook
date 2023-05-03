@@ -8,7 +8,14 @@ import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { Layout } from './Layout/Layout';
 import { HomePage } from 'pages/HomePage/HomePage';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshThunk } from 'redux/Auth/AuthOperations';
 export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
   return (
     <div
       style={{

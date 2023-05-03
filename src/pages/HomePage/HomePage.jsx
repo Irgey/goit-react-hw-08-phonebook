@@ -1,7 +1,7 @@
 export const HomePage = () => {
   return (
     <>
-      <p>ebaaa</p>
+      <p>Welocme to Contacts WebSite!</p>
     </>
   );
 };
