@@ -28,6 +28,7 @@ const authSlice = createSlice({
         console.log(payload);
         state.user = payload.user;
         state.token = payload.token;
+        state.isOnline = true;
       })
       .addCase(logOutThunk.fulfilled, (state, { payload }) => {
         state.user = '';
