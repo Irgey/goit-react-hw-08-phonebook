@@ -3,6 +3,7 @@ import { ContactForm, ContactList, Filter } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
+import styled from '@emotion/styled';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const ContactsPage = () => {
   }, [dispatch]);
 
   const filter = useSelector(selectFilter);
-  const renderContacts = () => {
+  const renderContacts = (() => {
     if (filter) {
       const normalizedFilter = filter.toLowerCase();
       const filteredContacts = contacts.filter(contact =>
@@ -22,7 +23,7 @@ export const ContactsPage = () => {
       return filteredContacts;
     }
     return contacts;
-  };
+  })();
   return (
     <div
       style={{
@@ -35,7 +36,7 @@ export const ContactsPage = () => {
 
       <h2>Contacts</h2>
       <Filter />
-      <ContactList contacts={renderContacts()} />
+      <ContactList contacts={renderContacts} />
     </div>
   );
 };

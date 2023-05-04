@@ -1,3 +1,6 @@
+import styled from '@emotion/styled';
+import { Button, TextField } from '@mui/material';
+import { StyledForm } from 'Global.styled';
 import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from 'redux/Auth/AuthOperations';
@@ -20,25 +23,45 @@ export const LoginPage = () => {
         <Oval
           height={80}
           width={80}
-          color="#4fa94d"
+          color="#065893"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
           ariaLabel="oval-loading"
-          secondaryColor="#4fa94d"
+          secondaryColor="#0f5cc7"
           strokeWidth={8}
           strokeWidthSecondary={8}
         />
       ) : (
         <>
           {' '}
-          <h1>Login form</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
+          <StyledForm $center onSubmit={handleSubmit}>
+            {' '}
+            <h1>Login form</h1>
+            <TextField
+              id="filled-basic"
+              label="E-mail"
+              variant="filled"
+              type="email"
+              name="email"
+              autoComplete="email"
+              required
+            />
+            {/* <label>
               E-mail:
               <input type="email" name="email" autoComplete="email" required />
-            </label>
-            <label>
+            </label> */}
+            <TextField
+              id="filled-basic"
+              label="Password"
+              variant="filled"
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              id="current-password"
+              required
+            />
+            {/* <label>
               Password:
               <input
                 type="password"
@@ -47,9 +70,12 @@ export const LoginPage = () => {
                 id="current-password"
                 required
               />
-            </label>
-            <button>Log in</button>
-          </form>
+            </label> */}
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+            {/* <button>Log in</button> */}
+          </StyledForm>
         </>
       )}
     </>

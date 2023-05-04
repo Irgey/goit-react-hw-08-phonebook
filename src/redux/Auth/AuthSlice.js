@@ -11,6 +11,7 @@ const initialState = {
   token: null,
   isOnline: false,
   authIsLoading: false,
+  isRefreshing: true,
   error: null,
 };
 
@@ -38,7 +39,14 @@ const authSlice = createSlice({
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isOnline = true;
+        state.isRefreshing = false;
       })
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+
+        state.isRefreshing = false;
+      })
+
       .addMatcher(
         action => action.type.endsWith('/pending'),
         state => {

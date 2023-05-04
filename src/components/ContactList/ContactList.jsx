@@ -14,12 +14,12 @@ const ContactList = ({ contacts }) => {
         <Oval
           height={80}
           width={80}
-          color="#4fa94d"
+          color="#065893"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
           ariaLabel="oval-loading"
-          secondaryColor="#4fa94d"
+          secondaryColor="#0f5cc7"
           strokeWidth={8}
           strokeWidthSecondary={8}
         />

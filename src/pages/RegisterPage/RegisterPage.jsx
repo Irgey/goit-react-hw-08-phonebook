@@ -1,3 +1,5 @@
+import { Button, TextField } from '@mui/material';
+import { StyledForm } from 'Global.styled';
 import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from 'redux/Auth/AuthOperations';
@@ -22,29 +24,58 @@ export const RegisterPage = () => {
         <Oval
           height={80}
           width={80}
-          color="#4fa94d"
+          color="#065893"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
           ariaLabel="oval-loading"
-          secondaryColor="#4fa94d"
+          secondaryColor="#0f5cc7"
           strokeWidth={8}
           strokeWidthSecondary={8}
         />
       ) : (
         <>
-          <h1>Registration form</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
+          <StyledForm $center onSubmit={handleSubmit}>
+            {' '}
+            <h1>Registration form</h1>
+            <TextField
+              id="filled-basic"
+              label="Name"
+              variant="filled"
+              type="text"
+              name="name"
+              autoComplete="name"
+              required
+            />
+            {/* <label>
               Name:
               <input type="text" name="name" autoComplete="name" required />
-            </label>
-
-            <label>
+            </label> */}
+            <TextField
+              id="filled-basic"
+              label="E-mail"
+              variant="filled"
+              type="email"
+              name="email"
+              autoComplete="email"
+              required
+            />
+            {/* <label>
               E-mail:
               <input type="email" name="email" autoComplete="email" required />
-            </label>
-            <label>
+            </label> */}
+            <TextField
+              id="filled-basic"
+              label="Password"
+              variant="filled"
+              type="password"
+              name="password"
+              autoComplete="new-password"
+              id="new-password"
+              required
+              minLength={7}
+            />
+            {/* <label>
               Password:
               <input
                 type="password"
@@ -54,9 +85,12 @@ export const RegisterPage = () => {
                 required
                 minLength={7}
               />
-            </label>
-            <button>Submit</button>
-          </form>
+            </label> */}
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+            {/* <button>Submit</button> */}
+          </StyledForm>
         </>
       )}
     </>

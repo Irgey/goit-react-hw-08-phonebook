@@ -1,10 +1,14 @@
-import { NavLink } from 'react-router-dom';
-
+import styled from '@emotion/styled';
+import { StyledNavLink } from 'Global.styled';
 export const NavBar = () => {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/contacts">Contacts</NavLink>
-    </nav>
+    <StyledNav>
+      <StyledNavLink to="/">Home</StyledNavLink>
+      <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+    </StyledNav>
   );
 };
+const StyledNav = styled.nav`
+  display: flex;
+  gap: 10px;
+`;

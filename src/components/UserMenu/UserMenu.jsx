@@ -1,3 +1,6 @@
+import styled from '@emotion/styled';
+import { Button } from '@mui/material';
+import { StyledNavLink } from 'Global.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logOutThunk } from 'redux/Auth/AuthOperations';
@@ -12,14 +15,22 @@ export const UserMenu = () => {
     dispatch(logOutThunk());
   };
   return isUserOnline ? (
-    <div>
+    <StyledDiv>
       <p>Hello, {name}</p>
-      <button onClick={handleLogOut}>Logout</button>
-    </div>
+      <Button variant="contained" onClick={handleLogOut}>
+        Logout
+      </Button>
+    </StyledDiv>
   ) : (
-    <div>
-      <NavLink to="/login">Log in</NavLink>
-      <NavLink to="/register">Register</NavLink>
-    </div>
+    <StyledDiv>
+      <StyledNavLink to="/login">Log in</StyledNavLink>
+      <StyledNavLink to="/register">Register</StyledNavLink>
+    </StyledDiv>
   );
 };
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;

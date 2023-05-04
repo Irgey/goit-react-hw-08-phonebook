@@ -11,50 +11,77 @@ import { HomePage } from 'pages/HomePage/HomePage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/AuthOperations';
-import { selectAuthIsLoading } from 'redux/selectors';
+import { selectIsRefreshing } from 'redux/selectors';
 import { Oval } from 'react-loader-spinner';
 import { PrivateRoute } from 'HOC/PrivateRoute';
+import { PublicRoute } from 'HOC/PublicRoute';
 export const App = () => {
   const dispatch = useDispatch();
-  const authIsLoading = useSelector(selectAuthIsLoading);
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
-  return authIsLoading ? (
+  return isRefreshing ? (
     <Oval
       height={80}
       width={80}
-      color="#4fa94d"
+      color="#065893"
       wrapperStyle={{}}
       wrapperClass=""
       visible={true}
       ariaLabel="oval-loading"
-      secondaryColor="#4fa94d"
+      secondaryColor="#0f5cc7"
       strokeWidth={8}
       strokeWidthSecondary={8}
     />
   ) : (
-    <div
-      style={{
-        paddingLeft: '15px',
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
+  // return (
+  //   <Routes>
+  //     <Route path="/" element={<Layout />}>
+  //       <Route index element={<HomePage />} />
+  //       <Route path="/register" element={<RegisterPage />} />
+  //       <Route path="/login" element={<LoginPage />} />
+  //       <Route
+  //         path="/contacts"
+  //         element={
+  //           <PrivateRoute>
+  //             <ContactsPage />
+  //           </PrivateRoute>
+  //         }
+  //       />
+  //       <Route path="*" element={<NotFoundPage />} />
+  //     </Route>
+  //   </Routes>
+  // );
 };
