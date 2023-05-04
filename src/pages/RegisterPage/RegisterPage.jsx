@@ -65,7 +65,6 @@ export const RegisterPage = () => {
               <input type="email" name="email" autoComplete="email" required />
             </label> */}
             <TextField
-              id="filled-basic"
               label="Password"
               variant="filled"
               type="password"
@@ -75,21 +74,9 @@ export const RegisterPage = () => {
               required
               minLength={7}
             />
-            {/* <label>
-              Password:
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                id="new-password"
-                required
-                minLength={7}
-              />
-            </label> */}
             <Button variant="contained" type="submit">
               Submit
             </Button>
-            {/* <button>Submit</button> */}
           </StyledForm>
         </>
       )}

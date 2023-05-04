@@ -47,7 +47,6 @@ export const LoginPage = () => {
               required
             />
             <TextField
-              id="filled-basic"
               label="Password"
               variant="filled"
               type="password"
