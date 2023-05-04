@@ -3,7 +3,6 @@ import { ContactForm, ContactList, Filter } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
-import styled from '@emotion/styled';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();

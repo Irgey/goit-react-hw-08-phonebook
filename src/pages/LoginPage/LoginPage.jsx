@@ -46,10 +46,6 @@ export const LoginPage = () => {
               autoComplete="email"
               required
             />
-            {/* <label>
-              E-mail:
-              <input type="email" name="email" autoComplete="email" required />
-            </label> */}
             <TextField
               id="filled-basic"
               label="Password"
@@ -60,20 +56,9 @@ export const LoginPage = () => {
               id="current-password"
               required
             />
-            {/* <label>
-              Password:
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                id="current-password"
-                required
-              />
-            </label> */}
             <Button variant="contained" type="submit">
               Submit
             </Button>
-            {/* <button>Log in</button> */}
           </StyledForm>
         </>
       )}

@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/slice';
 import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
-import Input from '@mui/material/Input';
 import styled from '@emotion/styled';
 
 const Filter = () => {

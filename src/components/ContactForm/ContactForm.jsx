@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
-import css from './ContactForm.module.css';
 import { Button, TextField } from '@mui/material';
 import { StyledForm } from 'Global.styled';
 

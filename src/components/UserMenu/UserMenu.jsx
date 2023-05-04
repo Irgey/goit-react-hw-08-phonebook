@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 import { StyledNavLink } from 'Global.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { logOutThunk } from 'redux/Auth/AuthOperations';
 import { selectAuthUser, selectIsOnline } from 'redux/selectors';
 
