@@ -25,11 +25,7 @@ export const ContactsPage = () => {
     return contacts;
   })();
   return (
-    <div
-      style={{
-        paddingLeft: '15px',
-      }}
-    >
+    <div>
       <h1>Phonebook</h1>
 
       <ContactForm />

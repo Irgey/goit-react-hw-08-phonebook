@@ -66,22 +66,4 @@ export const App = () => {
       </Route>
     </Routes>
   );
-  // return (
-  //   <Routes>
-  //     <Route path="/" element={<Layout />}>
-  //       <Route index element={<HomePage />} />
-  //       <Route path="/register" element={<RegisterPage />} />
-  //       <Route path="/login" element={<LoginPage />} />
-  //       <Route
-  //         path="/contacts"
-  //         element={
-  //           <PrivateRoute>
-  //             <ContactsPage />
-  //           </PrivateRoute>
-  //         }
-  //       />
-  //       <Route path="*" element={<NotFoundPage />} />
-  //     </Route>
-  //   </Routes>
-  // );
 };
