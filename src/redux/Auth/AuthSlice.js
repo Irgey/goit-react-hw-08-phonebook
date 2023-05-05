@@ -21,7 +21,7 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        state.user = payload.user;
         state.token = payload.token;
         state.isOnline = true;
       })

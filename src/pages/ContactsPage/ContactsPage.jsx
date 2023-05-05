@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ContactForm, ContactList, Filter } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();

@@ -15,7 +15,7 @@
   |============================
 */
 import { configureStore } from '@reduxjs/toolkit';
-import { contactsReducer } from './slice';
+import { contactsReducer } from './contacts/slice';
 import { authReducer } from './Auth/AuthSlice';
 import {
   persistStore,

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/slice';
+import { setFilter } from 'redux/contacts/slice';
 import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
 import styled from '@emotion/styled';
